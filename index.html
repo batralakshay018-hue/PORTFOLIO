@@ -1,0 +1,871 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#07111f">
+  <meta name="description" content="Lakshay Batra is a second-year B.Tech CSE (AI/ML) student at JECRC University, exploring intelligent technology and web development.">
+  <title>Lakshay Batra | CSE (AI/ML) Student</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: dark;
+      --ink: #07111f;
+      --ink-soft: #0c1929;
+      --paper: #f3f5f7;
+      --white: #fff;
+      --muted: #9ba9b9;
+      --line: rgba(255,255,255,.13);
+      --blue: #4c9dff;
+      --blue-bright: #78b9ff;
+      --blue-dark: #14365e;
+      --lime: #c3ed8b;
+      --mono: 'DM Mono', 'Courier New', monospace;
+      --sans: 'Manrope', 'Segoe UI', sans-serif;
+      --width: 1160px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 82px; }
+    body { margin: 0; background: var(--ink); color: var(--white); font-family: var(--sans); font-size: 15px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible, summary:focus-visible { outline: 2px solid var(--blue-bright); outline-offset: 4px; }
+    ::selection { background: var(--blue); color: var(--ink); }
+    .wrap { width: min(var(--width), calc(100% - 48px)); margin-inline: auto; }
+    .mono { font-family: var(--mono); letter-spacing: 0; }
+    .eyebrow { display: flex; align-items: center; gap: 10px; color: var(--blue-bright); font: 500 11px var(--mono); text-transform: uppercase; }
+    .eyebrow::before { content: ''; width: 22px; height: 1px; background: currentColor; }
+    .section { padding: 108px 0; }
+    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 30px; margin-bottom: 42px; }
+    .section-head h2 { margin: 8px 0 0; font-size: clamp(32px, 4vw, 48px); line-height: 1.1; letter-spacing: 0; }
+    .section-head p { max-width: 420px; margin: 0; color: #647082; }
+    .light { color-scheme: light; background: var(--paper); color: var(--ink); }
+    .light .eyebrow { color: #236bc2; }
+    .light .section-head p { color: #5b6675; }
+
+    .nav { position: fixed; z-index: 20; inset: 0 0 auto; border-bottom: 1px solid rgba(255,255,255,.08); background: rgba(7,17,31,.88); backdrop-filter: blur(16px); }
+    .nav-inner { width: min(var(--width), calc(100% - 48px)); height: 72px; margin: auto; display: flex; align-items: center; justify-content: space-between; }
+    .brand { display: inline-flex; gap: 9px; align-items: center; font-size: 15px; font-weight: 800; letter-spacing: 0; }
+    .brand-mark { display: grid; width: 28px; height: 28px; place-items: center; border: 1px solid var(--blue); color: var(--blue-bright); font: 500 13px var(--mono); }
+    .nav-links { display: flex; align-items: center; gap: 27px; color: #c5ced8; font: 11px var(--mono); }
+    .nav-links a { transition: color .2s ease; }
+    .nav-links a:hover { color: var(--blue-bright); }
+    .nav-links .nav-contact { padding: 9px 13px; border: 1px solid rgba(120,185,255,.48); color: var(--blue-bright); }
+    .menu-toggle { display: none; border: 1px solid var(--line); padding: 8px 10px; color: white; background: transparent; font: 11px var(--mono); }
+
+    .hero { min-height: 740px; min-height: max(740px, 100svh); position: relative; overflow: hidden; display: grid; align-items: center; padding: 130px 0 88px; background: radial-gradient(ellipse at 75% 38%, rgba(35,91,157,.2), transparent 34%), linear-gradient(120deg, #07111f 0%, #091524 60%, #0c1c30 100%); }
+    .hero::after { content: ''; position: absolute; inset: 0; pointer-events: none; opacity: .14; background-image: linear-gradient(rgba(138,181,227,.11) 1px, transparent 1px), linear-gradient(90deg, rgba(138,181,227,.11) 1px, transparent 1px); background-size: 54px 54px; mask-image: linear-gradient(90deg, transparent, black 80%); }
+    .hero-glow { position: absolute; width: 540px; aspect-ratio: 1; border: 1px solid rgba(89,159,236,.13); border-radius: 50%; right: 4%; top: 16%; box-shadow: 0 0 0 52px rgba(89,159,236,.025), 0 0 0 104px rgba(89,159,236,.018); animation: breathe 8s ease-in-out infinite; }
+    .hero-glow::before, .hero-glow::after { content: ''; position: absolute; border: 1px solid rgba(89,159,236,.21); border-radius: 50%; inset: 15%; }
+    .hero-glow::after { inset: 32%; border-color: rgba(89,159,236,.28); }
+    .orbit-dot { position: absolute; z-index: 1; right: 18%; top: 27%; width: 8px; height: 8px; border-radius: 50%; background: var(--blue-bright); box-shadow: 0 0 20px var(--blue); animation: orbit 14s linear infinite; transform-origin: -130px 130px; }
+    .hero-content { position: relative; z-index: 2; display: grid; grid-template-columns: minmax(0, 1fr) 310px; gap: 65px; align-items: center; }
+    .hero-copy { max-width: 720px; }
+    .availability { display: inline-flex; align-items: center; gap: 9px; padding: 7px 10px; border: 1px solid rgba(195,237,139,.24); color: #d3e8b9; background: rgba(195,237,139,.06); font: 10px var(--mono); text-transform: uppercase; }
+    .availability i { width: 6px; height: 6px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 12px var(--lime); }
+    h1 { margin: 23px 0 15px; font-size: clamp(72px, 12vw, 150px); line-height: .87; letter-spacing: 0; font-weight: 800; }
+    h1 span { color: transparent; -webkit-text-stroke: 1px rgba(211,228,246,.55); }
+    .hero-role { margin: 26px 0 11px; color: #e6edf5; font-size: clamp(18px, 2.4vw, 23px); font-weight: 600; }
+    .hero-tagline { max-width: 590px; margin: 0; color: #a7b5c5; font-size: 16px; }
+    .hero-intro { max-width: 550px; margin: 13px 0 0; color: #8292a5; font-size: 13px; }
+    .social-links { display: flex; align-items: center; gap: 10px; margin-top: 20px; }
+    .social-link { display: inline-grid; width: 40px; height: 40px; place-items: center; border: 1px solid rgba(255,255,255,.2); color: #b8c8d9; transition: color .2s ease, border-color .2s ease, transform .2s ease; }
+    .social-link:hover { transform: translateY(-2px); border-color: var(--blue-bright); color: var(--blue-bright); }
+    .social-link svg, .contact-button svg, .footer-social svg { width: 17px; height: 17px; fill: currentColor; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 29px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 47px; padding: 0 17px; border: 1px solid var(--blue); background: var(--blue); color: #07111f; font: 600 12px var(--mono); transition: transform .2s ease, background .2s ease, border-color .2s ease; }
+    .button:hover { transform: translateY(-2px); background: var(--blue-bright); border-color: var(--blue-bright); }
+    .button.secondary { background: transparent; color: var(--white); border-color: rgba(255,255,255,.28); }
+    .button.secondary:hover { border-color: var(--blue-bright); color: var(--blue-bright); }
+    .button .arrow { font-size: 15px; }
+    .profile-wrap { justify-self: end; position: relative; width: 270px; }
+    .profile-frame { position: relative; display: grid; aspect-ratio: .82; place-items: center; overflow: hidden; border: 1px solid rgba(120,185,255,.42); background: linear-gradient(145deg, #1d3858, #0d1d30 58%, #132b46); }
+    .profile-frame::before { content: ''; position: absolute; inset: 12px; border: 1px solid rgba(255,255,255,.13); }
+    .profile-initials { color: rgba(211,230,251,.9); font-size: 92px; font-weight: 800; letter-spacing: 0; }
+    .profile-cross { position: absolute; width: 15px; height: 15px; top: 27px; right: 27px; color: var(--blue-bright); font: 16px var(--mono); }
+    .profile-caption { position: absolute; right: -14px; bottom: 20px; padding: 10px 12px; border: 1px solid rgba(120,185,255,.35); background: #0a1625; color: #c5d1df; font: 10px var(--mono); }
+    .profile-caption strong { display: block; color: var(--blue-bright); font-weight: 400; }
+    .hero-meta { position: absolute; z-index: 2; bottom: 30px; left: max(24px, calc((100% - var(--width))/2)); display: flex; gap: 24px; color: #75869a; font: 10px var(--mono); }
+
+    .about-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 74px; align-items: start; }
+    .about-lead { max-width: 430px; margin: 0; color: #1d2b3c; font-size: clamp(23px, 3vw, 34px); font-weight: 600; line-height: 1.35; }
+    .about-copy { margin: 2px 0 0; color: #596575; font-size: 15px; }
+    .about-copy p { margin: 0 0 17px; }
+    .fact-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 25px; }
+    .fact { padding: 8px 10px; border: 1px solid #d5dce3; color: #364357; font: 10px var(--mono); }
+    .education { display: grid; grid-template-columns: 58px 1fr auto; gap: 18px; align-items: center; padding: 25px; border: 1px solid #d6dde5; background: rgba(255,255,255,.45); }
+    .edu-icon { display: grid; width: 52px; height: 52px; place-items: center; border: 1px solid #bdd5ef; color: #236bc2; font: 19px var(--mono); }
+    .education h3 { margin: 0 0 4px; font-size: 18px; }
+    .education p { margin: 0; color: #667182; font-size: 13px; }
+    .edu-year { align-self: start; color: #236bc2; font: 10px var(--mono); white-space: nowrap; }
+    .edu-details { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; padding: 22px 25px; border: 1px solid #d6dde5; border-top: 0; }
+    .edu-detail span { display: block; color: #7a8591; font: 9px var(--mono); text-transform: uppercase; }
+    .edu-detail strong { display: block; margin-top: 3px; color: #1a2a3d; font-size: 12px; font-weight: 600; }
+
+    .skills-section { background: #0c1929; }
+    .skills-section .section-head p { color: #98a7b7; }
+    .skills-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+    .skill { min-height: 150px; padding: 22px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); transition: background .2s ease; }
+    .skill:hover { background: rgba(69,145,226,.08); }
+    .skill-index { color: var(--blue-bright); font: 10px var(--mono); }
+    .skill h3 { margin: 18px 0 5px; font-size: 16px; }
+    .skill p { margin: 0; color: #92a0b0; font-size: 11px; }
+    .skill-note { margin: 17px 0 0; color: #8797aa; font: 10px var(--mono); }
+
+    .projects-section { background: #e8edf2; }
+    .project-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; align-items: stretch; }
+    .project-card { display: flex; min-width: 0; flex-direction: column; border: 1px solid #cbd4de; background: #f8fafb; color: var(--ink); transition: transform .22s ease, box-shadow .22s ease; }
+    .project-card:hover { transform: translateY(-4px); box-shadow: 0 13px 30px rgba(14,32,55,.1); }
+    .project-preview { position: relative; min-height: 205px; overflow: hidden; background: #10233a; color: white; }
+    .project-preview.code-preview { display: flex; flex-direction: column; justify-content: space-between; padding: 18px; background: radial-gradient(ellipse at 86% 12%, rgba(73,144,218,.32), transparent 48%), #10233a; }
+    .code-preview::after { content: ''; position: absolute; width: 140px; height: 140px; right: -34px; bottom: -50px; border: 1px solid rgba(147,196,243,.22); border-radius: 50%; box-shadow: 0 0 0 22px rgba(147,196,243,.035), 0 0 0 45px rgba(147,196,243,.025); }
+    .code-preview-top, .code-preview-bottom { position: relative; z-index: 1; display: flex; justify-content: space-between; gap: 10px; color: #a9bfd5; font: 9px var(--mono); }
+    .code-preview-title { position: relative; z-index: 1; max-width: 90%; color: #eff6fd; font-size: 19px; font-weight: 700; line-height: 1.25; }
+    .code-preview-title span { display: block; margin-top: 9px; color: #83b9ed; font: 10px var(--mono); }
+    .project-filters { display: flex; flex-wrap: wrap; gap: 8px; margin: -13px 0 25px; }
+    .filter-button { min-height: 36px; padding: 0 12px; border: 1px solid #c5d0dc; background: transparent; color: #405064; font: 10px var(--mono); cursor: pointer; transition: background .2s ease, color .2s ease, border-color .2s ease; }
+    .filter-button:hover, .filter-button[aria-pressed="true"] { border-color: #1d5e9f; background: #15385c; color: white; }
+    .project-count { margin-left: auto; align-self: center; color: #697787; font: 10px var(--mono); }
+    .project-card[hidden] { display: none; }
+    .project-title-link { color: inherit; }
+    .project-title-link:hover { color: #1f5fa4; }
+    .project-details-content { margin: 10px 0 0; }
+    .project-details-content h4 { margin: 14px 0 5px; color: #26384d; font-size: 11px; }
+      .project-details-content p, .project-details-content li { color: #5b6674; font-size: 11px; }
+    .project-details-content ul { margin: 5px 0 0; padding-left: 17px; }
+    .project-links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .project-links a { color: #1f5fa4; font: 10px var(--mono); }
+    .project-links a:hover { color: #0d3157; text-decoration: underline; text-underline-offset: 3px; }
+    .project-note { margin: 18px 0 0; color: #677586; font: 10px var(--mono); }
+
+    .ai-section { position: relative; overflow: hidden; background: radial-gradient(ellipse at 86% 12%, rgba(45,105,171,.2), transparent 34%), #091625; }
+    .ai-section::after { content: ''; position: absolute; width: 430px; height: 430px; right: -200px; bottom: -240px; border: 1px solid rgba(95,164,235,.16); border-radius: 50%; box-shadow: 0 0 0 48px rgba(95,164,235,.025), 0 0 0 96px rgba(95,164,235,.02); pointer-events: none; }
+    .ai-section .section-head p { color: #9eacbc; }
+    .ai-layout { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(230px, .72fr) minmax(0, 1.5fr); gap: 25px; align-items: start; }
+    .ai-sidebar { display: grid; gap: 13px; }
+    .ai-provider { width: 100%; display: grid; grid-template-columns: 42px 1fr; gap: 12px; align-items: center; padding: 15px; border: 1px solid rgba(255,255,255,.14); background: rgba(255,255,255,.025); color: #dce5ef; text-align: left; cursor: pointer; transition: background .2s ease, border-color .2s ease, transform .2s ease; }
+    .ai-provider:hover { transform: translateY(-2px); border-color: rgba(120,185,255,.55); }
+    .ai-provider[aria-pressed="true"] { border-color: var(--blue); background: rgba(76,157,255,.11); box-shadow: inset 3px 0 var(--blue); }
+    .ai-provider-icon { display: grid; width: 40px; height: 40px; place-items: center; border: 1px solid rgba(120,185,255,.35); color: var(--blue-bright); font: 20px var(--mono); }
+    .ai-provider strong { display: block; font-size: 12px; }
+    .ai-provider small { display: block; margin-top: 3px; color: #8999ab; font-size: 10px; line-height: 1.4; }
+    .ai-demo-card { padding: 15px; border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.025); color: #9baabc; font-size: 11px; }
+    .ai-demo-label { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; color: #d3e6f8; font: 10px var(--mono); }
+    .ai-demo-label i { width: 7px; height: 7px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 10px rgba(195,237,139,.55); }
+    .ai-demo-card p { margin: 0; }
+    .ai-help { margin: 0; color: #8393a6; font: 9px/1.6 var(--mono); }
+    .ai-chat { min-width: 0; border: 1px solid rgba(255,255,255,.15); background: rgba(6,15,26,.76); box-shadow: 0 16px 42px rgba(0,0,0,.2); }
+    .ai-chat-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 58px; padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,.11); }
+    .ai-chat-head strong { display: block; font-size: 12px; }
+    .ai-chat-head small { display: block; margin-top: 2px; color: #8595a8; font: 9px var(--mono); }
+    .ai-clear { padding: 8px 10px; border: 1px solid rgba(255,255,255,.18); background: transparent; color: #aab8c7; font: 9px var(--mono); cursor: pointer; }
+    .ai-clear:hover { border-color: var(--blue-bright); color: var(--blue-bright); }
+    .ai-messages { display: flex; min-height: 280px; max-height: 420px; flex-direction: column; gap: 15px; overflow-y: auto; padding: 20px; scroll-behavior: smooth; }
+    .ai-message { display: flex; max-width: min(90%, 640px); flex-direction: column; align-items: start; gap: 5px; }
+    .ai-message.user { align-self: end; align-items: end; }
+    .ai-message-label { color: #8ca1b8; font: 9px var(--mono); }
+    .ai-bubble { padding: 11px 13px; border: 1px solid rgba(255,255,255,.11); border-radius: 2px 9px 9px 9px; background: #11233a; color: #d9e3ed; font-size: 12px; line-height: 1.65; white-space: pre-wrap; overflow-wrap: anywhere; }
+    .ai-message.user .ai-bubble { border-color: rgba(97,168,242,.42); border-radius: 9px 2px 9px 9px; background: #15385c; color: #eff7ff; }
+    .ai-message.error .ai-bubble { border-color: rgba(255,159,145,.4); background: rgba(119,44,43,.2); color: #ffd1c9; }
+    .ai-retry { padding: 4px 0; border: 0; background: transparent; color: var(--blue-bright); font: 9px var(--mono); cursor: pointer; }
+    .ai-typing { display: inline-flex; align-items: center; gap: 5px; min-height: 34px; padding: 0 12px; border: 1px solid rgba(255,255,255,.11); background: #11233a; }
+    .ai-typing i { width: 5px; height: 5px; border-radius: 50%; background: #8fc4ff; animation: ai-dot 1s ease-in-out infinite; }
+    .ai-typing i:nth-child(2) { animation-delay: .14s; }
+    .ai-typing i:nth-child(3) { animation-delay: .28s; }
+    @keyframes ai-dot { 0%, 60%, 100% { opacity: .35; transform: translateY(0); } 30% { opacity: 1; transform: translateY(-3px); } }
+    .ai-prompts { display: flex; flex-wrap: wrap; gap: 7px; padding: 12px 15px 0; }
+    .ai-prompt { padding: 7px 9px; border: 1px solid rgba(255,255,255,.15); border-radius: 3px; background: transparent; color: #aab9c8; font: 9px var(--mono); cursor: pointer; }
+    .ai-prompt:hover { border-color: var(--blue-bright); color: var(--blue-bright); }
+    .ai-compose { display: grid; grid-template-columns: 1fr auto; gap: 9px; padding: 13px 15px 15px; }
+    .ai-compose textarea { width: 100%; min-height: 46px; max-height: 130px; resize: vertical; padding: 12px; border: 1px solid rgba(255,255,255,.18); border-radius: 3px; background: rgba(255,255,255,.045); color: white; font: 12px var(--sans); }
+    .ai-compose textarea::placeholder { color: #8392a4; }
+    .ai-send { min-width: 82px; padding: 0 13px; border: 1px solid var(--blue); border-radius: 3px; background: var(--blue); color: #07111f; font: 600 10px var(--mono); cursor: pointer; }
+    .ai-send:hover:not(:disabled) { border-color: var(--blue-bright); background: var(--blue-bright); }
+    .ai-send:disabled { opacity: .55; cursor: wait; }
+    .ai-compose-hint { grid-column: 1 / -1; margin: -4px 0 0; color: #738399; font: 9px var(--mono); }
+    .ai-status { position: relative; z-index: 1; min-height: 20px; margin: 12px 0 0; color: #8fa0b3; font: 10px var(--mono); }
+    .ai-status.error { color: #ffb6a8; }
+    .ai-status.real { color: var(--lime); }
+    .reading-preview { padding: 16px 19px; background: radial-gradient(ellipse at 90% 10%, rgba(58,126,198,.34), transparent 45%), #10233a; }
+    .preview-top { display: flex; align-items: center; justify-content: space-between; color: #b6c8dd; font: 9px var(--mono); }
+    .preview-dot { display: inline-block; width: 6px; height: 6px; margin-right: 6px; border-radius: 50%; background: #a6d881; }
+    .preview-heading { margin: 21px 0 11px; font-size: 17px; font-weight: 700; }
+    .preview-counts { display: flex; gap: 7px; }
+    .preview-count { flex: 1; padding: 8px 9px; border: 1px solid rgba(255,255,255,.13); background: rgba(255,255,255,.045); }
+    .preview-count b { display: block; color: #8fc4ff; font: 13px var(--mono); }
+    .preview-count span { color: #a8b7c8; font-size: 8px; }
+    .preview-book { display: flex; align-items: center; justify-content: space-between; margin-top: 8px; padding: 7px 9px; border: 1px solid rgba(255,255,255,.1); color: #dce5ef; font-size: 9px; }
+    .preview-tag { color: #c6e8a4; font: 8px var(--mono); }
+    .future-preview { display: grid; place-items: center; background: radial-gradient(circle at center, #183858, #0b1929 65%); }
+    .future-glyph { color: rgba(137,189,239,.8); font: 50px var(--mono); }
+    .future-label { position: absolute; bottom: 14px; left: 16px; color: #a6b8ca; font: 9px var(--mono); }
+    .project-body { display: flex; flex: 1; flex-direction: column; align-items: start; padding: 20px; }
+    .project-type { color: #286caf; font: 9px var(--mono); text-transform: uppercase; }
+    .project-body h3 { margin: 8px 0; font-size: 19px; line-height: 1.3; }
+    .project-body p { margin: 0; color: #647182; font-size: 12px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
+    .tag { padding: 4px 7px; border: 1px solid #d5dce4; color: #536173; font: 9px var(--mono); }
+    .project-actions { display: flex; flex-wrap: wrap; gap: 13px; margin-top: auto; padding-top: 20px; }
+    .text-link { padding: 0; border: 0; background: none; color: #1f5fa4; font: 10px var(--mono); cursor: pointer; }
+    .text-link:hover { color: #0d3157; text-decoration: underline; text-underline-offset: 3px; }
+    .text-link[aria-disabled="true"] { color: #7d8793; cursor: not-allowed; text-decoration: none; }
+    .project-details { width: 100%; margin-top: 14px; border-top: 1px solid #dbe1e6; padding-top: 10px; color: #5b6674; font-size: 11px; }
+    .project-details summary { color: #1f5fa4; font: 10px var(--mono); cursor: pointer; }
+    .project-details p { margin-top: 9px; }
+
+    .learning-section { background: #f3f5f7; }
+    .learning-layout { display: grid; grid-template-columns: .85fr 1.15fr; gap: 70px; }
+    .learning-intro { max-width: 370px; color: #5d6877; font-size: 14px; }
+    .learning-intro strong { color: #152840; }
+    .learning-list { border-top: 1px solid #cbd3dc; }
+    .learning-item { display: flex; justify-content: space-between; gap: 20px; padding: 15px 3px; border-bottom: 1px solid #cbd3dc; }
+    .learning-item strong { font-size: 14px; font-weight: 600; }
+    .learning-item span { color: #748090; font: 10px var(--mono); }
+    .achievements { margin-top: 85px; border-top: 1px solid #cbd3dc; padding-top: 30px; }
+    .achievements-top { display: flex; align-items: baseline; justify-content: space-between; gap: 20px; }
+    .achievements h3 { margin: 0; font-size: 20px; }
+    .achievements-top p { margin: 0; color: #687485; font-size: 12px; }
+    .achievement-empty { margin-top: 18px; padding: 17px 0; border-top: 1px dashed #c3cdd7; border-bottom: 1px dashed #c3cdd7; color: #697687; font-size: 12px; }
+
+    .contact-section { position: relative; overflow: hidden; background: #0b1726; }
+    .contact-section::after { content: ''; position: absolute; width: 400px; height: 400px; right: -130px; bottom: -240px; border: 1px solid rgba(81,154,229,.18); border-radius: 50%; box-shadow: 0 0 0 44px rgba(81,154,229,.035), 0 0 0 90px rgba(81,154,229,.025); }
+    .contact-section .section-head p { color: #a3afbd; }
+    .contact-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 80px; position: relative; z-index: 1; }
+    .contact-copy { color: #a2b0bf; font-size: 13px; }
+    .contact-copy > p { max-width: 365px; }
+    .contact-list { margin-top: 31px; border-top: 1px solid var(--line); }
+    .contact-row { display: flex; justify-content: space-between; gap: 12px; padding: 13px 0; border-bottom: 1px solid var(--line); font: 10px var(--mono); }
+    .contact-row span:first-child { color: #75879c; }
+    .contact-row span:last-child { color: #d4dfeb; }
+    .contact-row a { color: #c6d9ed; text-align: right; overflow-wrap: anywhere; }
+    .contact-row a:hover { color: var(--blue-bright); }
+    .contact-buttons { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 19px; }
+    .contact-button { display: inline-flex; min-height: 40px; align-items: center; justify-content: center; gap: 8px; padding: 0 11px; border: 1px solid rgba(120,185,255,.4); color: #d7e5f4; font: 9px var(--mono); transition: border-color .2s ease, color .2s ease, background .2s ease; }
+    .contact-button:hover { border-color: var(--blue-bright); color: var(--blue-bright); background: rgba(76,157,255,.08); }
+    .contact-button svg { width: 14px; height: 14px; }
+    .contact-form { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+    .field { display: flex; flex-direction: column; gap: 7px; }
+    .field.full { grid-column: 1 / -1; }
+    .field label { color: #b7c2cf; font: 10px var(--mono); }
+    .field input, .field textarea { width: 100%; border: 1px solid rgba(255,255,255,.19); border-radius: 0; padding: 12px 13px; background: rgba(255,255,255,.035); color: white; font: 12px var(--sans); }
+    .field input::placeholder, .field textarea::placeholder { color: #738297; }
+    .field textarea { min-height: 125px; resize: vertical; }
+    .form-bottom { grid-column: 1 / -1; display: flex; align-items: center; flex-wrap: wrap; gap: 14px; }
+    .form-note { margin: 0; color: #8191a4; font-size: 10px; }
+    .form-status { grid-column: 1 / -1; min-height: 20px; margin: 0; color: var(--lime); font-size: 12px; }
+
+    footer { border-top: 1px solid var(--line); background: #07111f; }
+    .footer-inner { min-height: 92px; display: flex; align-items: center; justify-content: space-between; gap: 22px; }
+    .footer-brand { color: #d8e1eb; font-size: 11px; font-weight: 700; }
+    .footer-brand span { display: block; margin-top: 3px; color: #8493a4; font: 9px var(--mono); }
+    .footer-nav { display: flex; gap: 19px; color: #9ba9b8; font: 9px var(--mono); }
+    .footer-nav a:hover { color: var(--blue-bright); }
+    .footer-social { display: flex; align-items: center; gap: 12px; }
+    .footer-social a { display: inline-grid; width: 32px; height: 32px; place-items: center; border: 1px solid rgba(255,255,255,.14); color: #9ba9b8; transition: color .2s ease, border-color .2s ease; }
+    .footer-social a:hover { border-color: var(--blue-bright); color: var(--blue-bright); }
+    .footer-social svg { width: 15px; height: 15px; }
+    .copyright { color: #718094; font: 9px var(--mono); }
+
+    .reveal { opacity: 0; transform: translateY(16px); transition: opacity .65s ease, transform .65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    @keyframes breathe { 0%,100% { transform: scale(1); opacity: .8; } 50% { transform: scale(1.035); opacity: 1; } }
+    @keyframes orbit { to { transform: rotate(360deg); } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } .reveal { opacity: 1; transform: none; } }
+    @media (max-width: 900px) {
+      .hero-content { grid-template-columns: 1fr 240px; gap: 25px; }
+      .profile-wrap { width: 225px; }
+      .profile-initials { font-size: 76px; }
+      .project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+      .contact-grid { gap: 45px; }
+      .ai-layout { grid-template-columns: 1fr; }
+      .ai-sidebar { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .ai-demo-card, .ai-help { grid-column: 1 / -1; }
+    }
+    @media (max-width: 680px) {
+      .wrap, .nav-inner { width: min(100% - 36px, var(--width)); }
+      .nav-inner { height: 64px; }
+      .menu-toggle { display: block; }
+      .nav-links { display: none; position: absolute; top: 63px; left: 0; right: 0; align-items: stretch; gap: 0; padding: 8px 18px 14px; border-bottom: 1px solid var(--line); background: #091524; }
+      .nav-links.open { display: flex; flex-direction: column; }
+      .nav-links a { padding: 12px 4px; border-bottom: 1px solid rgba(255,255,255,.07); }
+      .nav-links .nav-contact { margin-top: 10px; text-align: center; }
+      .hero { min-height: 800px; min-height: max(800px, 100svh); padding: 105px 0 100px; }
+      .hero-content { display: flex; flex-direction: column-reverse; align-items: stretch; gap: 26px; }
+      .profile-wrap { width: 146px; align-self: end; margin-right: 7px; }
+      .profile-frame { aspect-ratio: 1; }
+      .profile-initials { font-size: 49px; }
+      .profile-frame::before { inset: 8px; }
+      .profile-caption { right: -9px; bottom: 10px; padding: 7px 8px; font-size: 8px; }
+      .profile-cross { top: 17px; right: 17px; }
+      h1 { margin-top: 18px; font-size: clamp(65px, 19vw, 110px); }
+      .hero-role { margin-top: 20px; font-size: 17px; }
+      .hero-tagline { font-size: 14px; }
+      .hero-intro { font-size: 12px; }
+      .hero-glow { width: 300px; right: -130px; top: 13%; }
+      .orbit-dot { right: 20%; top: 20%; }
+      .hero-meta { left: 18px; right: 18px; bottom: 22px; gap: 12px; justify-content: space-between; font-size: 8px; }
+      .section { padding: 76px 0; }
+      .section-head { display: block; margin-bottom: 30px; }
+      .section-head p { margin-top: 13px; font-size: 13px; }
+      .about-grid, .learning-layout, .contact-grid { grid-template-columns: 1fr; gap: 31px; }
+      .about-lead { font-size: 25px; }
+      .education { grid-template-columns: 48px 1fr; gap: 13px; padding: 18px; }
+      .edu-icon { width: 44px; height: 44px; }
+      .edu-year { grid-column: 2; }
+      .edu-details { padding: 18px; }
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+      .skill { min-height: 130px; padding: 16px; }
+      .skill h3 { font-size: 14px; }
+      .project-grid { grid-template-columns: 1fr; }
+      .project-preview { min-height: 190px; }
+      .learning-layout { gap: 25px; }
+      .achievements { margin-top: 58px; }
+      .achievements-top { display: block; }
+      .achievements-top p { margin-top: 8px; }
+      .contact-form { gap: 13px; }
+      .ai-sidebar { grid-template-columns: 1fr; }
+      .ai-demo-card, .ai-help { grid-column: auto; }
+      .ai-messages { min-height: 300px; padding: 15px; }
+      .ai-message { max-width: 96%; }
+      .ai-prompt { max-width: 100%; text-align: left; }
+      .ai-compose { grid-template-columns: 1fr; }
+      .ai-send { min-height: 43px; }
+      .ai-compose-hint { grid-column: 1; }
+      .footer-inner { align-items: start; flex-direction: column; justify-content: center; padding: 22px 0; }
+      .footer-nav { flex-wrap: wrap; }
+    }
+    @media (max-width: 390px) {
+      .hero-actions { align-items: stretch; flex-direction: column; }
+      .hero-actions .button { width: 100%; }
+      .contact-form { grid-template-columns: 1fr; }
+      .field.full, .form-bottom, .form-status { grid-column: 1; }
+      .edu-details { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <nav class="nav-inner" aria-label="Main navigation">
+      <a class="brand" href="#home" aria-label="Lakshay Batra home"><span class="brand-mark">L.</span> LAKSHAY BATRA</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links">MENU</button>
+      <div class="nav-links" id="nav-links">
+        <a href="#about">ABOUT</a><a href="#education">EDUCATION</a><a href="#skills">INTERESTS</a><a href="#projects">PROJECTS</a><a href="#ai-playground">AI PLAYGROUND</a><a href="#learning">LEARNING</a><a class="nav-contact" href="#contact">GET IN TOUCH ↗</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <div class="hero-glow" aria-hidden="true"></div><span class="orbit-dot" aria-hidden="true"></span>
+      <div class="wrap hero-content">
+        <div class="hero-copy">
+          <div class="availability"><i></i> OPEN TO LEARNING & COLLABORATION</div>
+          <h1 id="hero-title">LAK<span>SHAY</span></h1>
+          <p class="hero-role">B.Tech CSE (AI/ML) Student at JECRC University.</p>
+          <p class="hero-tagline">Exploring Artificial Intelligence, Machine Learning, Web Development, and Innovative Technology.</p>
+          <p class="hero-intro">I'm a second-year computer science student curious about how thoughtful software can turn complex ideas into useful, human-centered tools.</p>
+          <div class="social-links" aria-label="Social profiles">
+            <a class="social-link" href="https://github.com/batralakshay018-hue" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile, opens in a new tab" title="GitHub profile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .9a11.1 11.1 0 0 0-3.51 21.63c.56.1.76-.24.76-.54v-2.1c-3.1.67-3.76-1.32-3.76-1.32-.5-1.29-1.24-1.63-1.24-1.63-1.01-.69.08-.68.08-.68 1.12.08 1.71 1.15 1.71 1.15 1 1.7 2.62 1.21 3.26.93.1-.72.39-1.21.71-1.49-2.48-.28-5.09-1.24-5.09-5.52 0-1.22.44-2.22 1.15-3-.12-.28-.5-1.42.11-2.96 0 0 .94-.3 3.05 1.14a10.6 10.6 0 0 1 5.55 0c2.11-1.44 3.05-1.14 3.05-1.14.61 1.54.23 2.68.11 2.96.72.78 1.15 1.78 1.15 3 0 4.29-2.61 5.23-5.1 5.5.4.35.76 1.02.76 2.06v3.1c0 .3.2.65.77.54A11.1 11.1 0 0 0 12 .9Z"/></svg></a>
+            <a class="social-link" href="https://www.linkedin.com/in/lakshay-batra-10615737b" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile, opens in a new tab" title="LinkedIn profile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 2H3.55C2.69 2 2 2.68 2 3.52v16.96c0 .84.69 1.52 1.55 1.52h16.9c.86 0 1.55-.68 1.55-1.52V3.52c0-.84-.69-1.52-1.55-1.52ZM7.93 18.75H4.96V9.19h2.97v9.56ZM6.45 7.88a1.72 1.72 0 1 1 0-3.44 1.72 1.72 0 0 1 0 3.44Zm12.3 10.87h-2.96V14.1c0-1.11-.02-2.54-1.55-2.54-1.55 0-1.79 1.21-1.79 2.46v4.73H9.49V9.19h2.84v1.31h.04c.4-.75 1.36-1.55 2.8-1.55 3 0 3.58 1.98 3.58 4.55v5.25Z"/></svg></a>
+            <a class="social-link" href="mailto:batralakshay018@gmail.com" aria-label="Email Lakshay Batra" title="Email Lakshay Batra"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm-.4 3.25-7.03 5.27a.95.95 0 0 1-1.14 0L4.4 7.25a1 1 0 1 1 1.2-1.6l6.4 4.8 6.4-4.8a1 1 0 1 1 1.2 1.6Z"/></svg></a>
+          </div>
+          <div class="hero-actions"><a class="button" href="#projects">EXPLORE MY PROJECTS <span class="arrow">↘</span></a><a class="button secondary" href="#contact">CONTACT ME <span class="arrow">↗</span></a></div>
+        </div>
+        <div class="profile-wrap" aria-label="Profile photo placeholder">
+          <div class="profile-frame"><span class="profile-initials">L</span><span class="profile-cross" aria-hidden="true">+</span></div>
+          <div class="profile-caption"><strong>PROFILE PHOTO</strong>Replace with your photo</div>
+        </div>
+      </div>
+      <div class="hero-meta"><span>JAIPUR, INDIA</span><span>STUDENT · YEAR 02</span><span>AI / ML · WEB</span></div>
+    </section>
+
+    <section class="section light" id="about">
+      <div class="wrap">
+        <div class="section-head reveal"><div><div class="eyebrow">01 / A LITTLE ABOUT ME</div><h2>Curiosity, then code.</h2></div><p>A student perspective on building useful things and learning how the technology behind them works.</p></div>
+        <div class="about-grid reveal">
+          <p class="about-lead">Hi, I'm Lakshay Batra, a second-year B.Tech Computer Science and Engineering student specializing in Artificial Intelligence and Machine Learning at JECRC University.</p>
+          <div class="about-copy"><p>I'm passionate about technology, programming, AI/ML, and building practical projects while continuously developing my technical skills.</p><p>Alongside my coursework, I’m exploring programming, web development, and the ideas shaping generative AI. I’m early in the journey, and keen to keep learning by making, testing, and improving.</p><div class="fact-row"><span class="fact">B.TECH · CSE</span><span class="fact">AI / ML SPECIALIZATION</span><span class="fact">SECOND YEAR</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section light" id="education" style="padding-top:0">
+      <div class="wrap">
+        <div class="section-head reveal"><div><div class="eyebrow">02 / EDUCATION</div><h2>Where I’m studying.</h2></div></div>
+        <div class="reveal">
+          <article class="education"><div class="edu-icon" aria-hidden="true">JU</div><div><h3>JECRC University</h3><p>Bachelor of Technology · Undergraduate</p></div><span class="edu-year">CURRENT · YEAR 02</span></article>
+          <div class="edu-details"><div class="edu-detail"><span>Branch</span><strong>Computer Science and Engineering</strong></div><div class="edu-detail"><span>Specialization</span><strong>Artificial Intelligence and Machine Learning</strong></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section skills-section" id="skills">
+      <div class="wrap">
+        <div class="section-head reveal"><div><div class="eyebrow">03 / AREAS OF INTEREST</div><h2>Things I’m exploring.</h2></div><p>A snapshot of subjects I’m learning about and practicing. These are interests, not a claim of professional proficiency.</p></div>
+        <div class="skills-grid reveal">
+          <article class="skill"><span class="skill-index">01</span><h3>Programming</h3><p>Foundations &amp; practice</p></article>
+          <article class="skill"><span class="skill-index">02</span><h3>Artificial Intelligence</h3><p>Concepts &amp; applications</p></article>
+          <article class="skill"><span class="skill-index">03</span><h3>Machine Learning</h3><p>Models &amp; fundamentals</p></article>
+          <article class="skill"><span class="skill-index">04</span><h3>Web Development</h3><p>Building for the browser</p></article>
+          <article class="skill"><span class="skill-index">05</span><h3>Prompt Engineering</h3><p>Working with language models</p></article>
+          <article class="skill"><span class="skill-index">06</span><h3>Git &amp; GitHub</h3><p>Version control workflows</p></article>
+          <article class="skill"><span class="skill-index">07</span><h3>AI-Assisted Development</h3><p>Tools in a learning workflow</p></article>
+          <article class="skill"><span class="skill-index">08</span><h3>Problem-Solving</h3><p>Breaking down challenges</p></article>
+        </div>
+        <p class="skill-note">EDIT THESE AREAS TO MATCH YOUR EXPERIENCE · ADD LANGUAGES &amp; TOOLS YOU ACTUALLY USE</p>
+      </div>
+    </section>
+
+    <section class="section projects-section" id="projects">
+      <div class="wrap">
+        <div class="section-head reveal"><div><div class="eyebrow">04 / GITHUB REPOSITORIES</div><h2>My projects.</h2></div><p>Four public Python repositories, reviewed from their source files and README documentation. Filter by the verified categories or open a card for project details.</p></div>
+        <div class="project-filters reveal" role="group" aria-label="Filter projects">
+          <button class="filter-button" type="button" data-filter="all" aria-pressed="true">ALL PROJECTS</button>
+          <button class="filter-button" type="button" data-filter="python" aria-pressed="false">PYTHON</button>
+          <button class="filter-button" type="button" data-filter="academic" aria-pressed="false">ACADEMIC PROJECTS</button>
+          <span class="project-count" id="project-count" aria-live="polite"></span>
+        </div>
+        <div class="project-grid reveal" id="project-grid" aria-live="polite"></div>
+        <p class="project-note reveal">NO SCREENSHOTS OR DEPLOYED DEMOS WERE FOUND IN THESE REPOSITORIES. CARD ART IS A TYPOGRAPHIC PLACEHOLDER, NOT AN APPLICATION SCREENSHOT.</p>
+      </div>
+    </section>
+
+    <section class="section ai-section" id="ai-playground" aria-labelledby="ai-title">
+      <div class="wrap">
+        <div class="section-head reveal"><div><div class="eyebrow">05 / AI PLAYGROUND</div><h2 id="ai-title">AI Playground — Chat with AI</h2></div><p>Ask about Lakshay’s background, learning interests, or verified GitHub projects. Choose a provider and try a prompt.</p></div>
+        <div class="ai-layout reveal">
+          <aside class="ai-sidebar" aria-label="AI provider selection">
+            <button class="ai-provider" type="button" data-provider="openai" aria-pressed="true">
+              <span class="ai-provider-icon" aria-hidden="true">✳</span><span><strong>ChatGPT by OpenAI</strong><small>OpenAI conversational model</small></span>
+            </button>
+            <button class="ai-provider" type="button" data-provider="xai" aria-pressed="false">
+              <span class="ai-provider-icon" aria-hidden="true">𝕏</span><span><strong>Grok by xAI</strong><small>xAI conversational model</small></span>
+            </button>
+            <div class="ai-demo-card"><div class="ai-demo-label"><i></i><span id="ai-mode-label">DEMO MODE</span></div><p id="ai-mode-description">Sample responses run locally in this page. Add server-side API keys to enable provider responses.</p></div>
+            <p class="ai-help">No API key is sent to the browser. Provider selection works without a page refresh.</p>
+          </aside>
+          <div class="ai-chat" aria-label="AI conversation">
+            <div class="ai-chat-head"><div><strong>AI conversation</strong><small>Selected provider: <span id="ai-selected-name">ChatGPT by OpenAI</span></small></div><button class="ai-clear" id="ai-clear" type="button" aria-label="Clear chat conversation">CLEAR CHAT</button></div>
+            <div class="ai-messages" id="ai-messages" role="log" aria-live="polite" aria-relevant="additions text"></div>
+            <div class="ai-prompts" aria-label="Example prompts">
+              <button class="ai-prompt" type="button">Tell me about Lakshay's projects</button>
+              <button class="ai-prompt" type="button">Explain artificial intelligence</button>
+              <button class="ai-prompt" type="button">Help me improve my coding skills</button>
+              <button class="ai-prompt" type="button">What technologies is Lakshay learning?</button>
+            </div>
+            <form class="ai-compose" id="ai-form">
+              <textarea id="ai-input" name="message" rows="1" maxlength="2000" placeholder="Ask me anything…" aria-label="Ask me anything" required></textarea>
+              <button class="ai-send" id="ai-send" type="submit">SEND ↗</button>
+              <p class="ai-compose-hint">ENTER TO SEND · SHIFT + ENTER FOR A NEW LINE</p>
+            </form>
+          </div>
+        </div>
+        <p class="ai-status" id="ai-status" role="status" aria-live="polite">Starting in demo mode until the server connection is checked.</p>
+      </div>
+    </section>
+
+    <section class="section learning-section" id="learning">
+      <div class="wrap">
+        <div class="section-head reveal"><div><div class="eyebrow">05 / ON MY LEARNING PATH</div><h2>Always a student.</h2></div></div>
+        <div class="learning-layout reveal"><div class="learning-intro"><p><strong>Learning is part of the work.</strong> These are topics I’m currently exploring through my studies and independent practice. They’re interests, not completed qualifications.</p></div><div class="learning-list"><div class="learning-item"><strong>Artificial Intelligence</strong><span>EXPLORING</span></div><div class="learning-item"><strong>Machine Learning</strong><span>EXPLORING</span></div><div class="learning-item"><strong>Python programming</strong><span>EXPLORING</span></div><div class="learning-item"><strong>Data Science</strong><span>EXPLORING</span></div><div class="learning-item"><strong>Web Development</strong><span>BUILDING</span></div><div class="learning-item"><strong>Generative AI</strong><span>EXPLORING</span></div></div></div>
+        <div class="achievements reveal"><div class="eyebrow">06 / MILESTONES</div><div class="achievements-top"><h3>Achievements &amp; certifications</h3><p>Add verified items here as you earn them.</p></div><div class="achievement-empty">No certificates, workshops, hackathons, or awards added yet.</div></div>
+      </div>
+    </section>
+
+    <section class="section contact-section" id="contact">
+      <div class="wrap">
+        <div class="section-head reveal"><div><div class="eyebrow">07 / CONTACT</div><h2>Let’s start a conversation.</h2></div><p>Have a question, an idea, or an opportunity to learn together? Email me or connect through my GitHub and LinkedIn profiles.</p></div>
+        <div class="contact-grid reveal">
+          <div class="contact-copy"><p>Reach out by email or find me on GitHub and LinkedIn.</p><div class="contact-list"><div class="contact-row"><span>EMAIL</span><a href="mailto:batralakshay018@gmail.com">batralakshay018@gmail.com</a></div><div class="contact-row"><span>LINKEDIN</span><a href="https://www.linkedin.com/in/lakshay-batra-10615737b" target="_blank" rel="noopener noreferrer">View profile ↗</a></div><div class="contact-row"><span>GITHUB</span><a href="https://github.com/batralakshay018-hue" target="_blank" rel="noopener noreferrer">View profile ↗</a></div></div><div class="contact-buttons"><a class="contact-button" href="mailto:batralakshay018@gmail.com" aria-label="Email Lakshay Batra"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm-.4 3.25-7.03 5.27a.95.95 0 0 1-1.14 0L4.4 7.25a1 1 0 1 1 1.2-1.6l6.4 4.8 6.4-4.8a1 1 0 1 1 1.2 1.6Z"/></svg>EMAIL ME</a><a class="contact-button" href="https://github.com/batralakshay018-hue" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub profile in a new tab"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .9a11.1 11.1 0 0 0-3.51 21.63c.56.1.76-.24.76-.54v-2.1c-3.1.67-3.76-1.32-3.76-1.32-.5-1.29-1.24-1.63-1.24-1.63-1.01-.69.08-.68.08-.68 1.12.08 1.71 1.15 1.71 1.15 1 1.7 2.62 1.21 3.26.93.1-.72.39-1.21.71-1.49-2.48-.28-5.09-1.24-5.09-5.52 0-1.22.44-2.22 1.15-3-.12-.28-.5-1.42.11-2.96 0 0 .94-.3 3.05 1.14a10.6 10.6 0 0 1 5.55 0c2.11-1.44 3.05-1.14 3.05-1.14.61 1.54.23 2.68.11 2.96.72.78 1.15 1.78 1.15 3 0 4.29-2.61 5.23-5.1 5.5.4.35.76 1.02.76 2.06v3.1c0 .3.2.65.77.54A11.1 11.1 0 0 0 12 .9Z"/></svg>GITHUB PROFILE</a><a class="contact-button" href="https://www.linkedin.com/in/lakshay-batra-10615737b" target="_blank" rel="noopener noreferrer" aria-label="Open LinkedIn profile in a new tab"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 2H3.55C2.69 2 2 2.68 2 3.52v16.96c0 .84.69 1.52 1.55 1.52h16.9c.86 0 1.55-.68 1.55-1.52V3.52c0-.84-.69-1.52-1.55-1.52ZM7.93 18.75H4.96V9.19h2.97v9.56ZM6.45 7.88a1.72 1.72 0 1 1 0-3.44 1.72 1.72 0 0 1 0 3.44Zm12.3 10.87h-2.96V14.1c0-1.11-.02-2.54-1.55-2.54-1.55 0-1.79 1.21-1.79 2.46v4.73H9.49V9.19h2.84v1.31h.04c.4-.75 1.36-1.55 2.8-1.55 3 0 3.58 1.98 3.58 4.55v5.25Z"/></svg>LINKEDIN PROFILE</a></div></div>
+          <form class="contact-form" id="contact-form">
+            <div class="field"><label for="name">YOUR NAME</label><input id="name" name="name" type="text" autocomplete="name" placeholder="Name" required minlength="2" maxlength="80"></div>
+            <div class="field"><label for="email">EMAIL ADDRESS</label><input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required maxlength="254"></div>
+            <div class="field full"><label for="message">MESSAGE</label><textarea id="message" name="message" placeholder="What would you like to talk about?" required minlength="10" maxlength="2000"></textarea></div>
+            <div class="form-bottom"><button class="button" type="submit">VALIDATE MESSAGE <span class="arrow">↗</span></button><p class="form-note">Demo only · No message is sent or stored.</p></div>
+            <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="wrap footer-inner"><div class="footer-brand">Designed and developed by Lakshay Batra<span>B.Tech CSE (AI/ML) Student | JECRC University</span></div><nav class="footer-nav" aria-label="Footer navigation"><a href="#about">ABOUT</a><a href="#projects">PROJECTS</a><a href="#ai-playground">AI PLAYGROUND</a><a href="#learning">LEARNING</a><a href="#contact">CONTACT</a></nav><div class="footer-social" aria-label="Social links"><a href="https://github.com/batralakshay018-hue" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile, opens in a new tab" title="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .9a11.1 11.1 0 0 0-3.51 21.63c.56.1.76-.24.76-.54v-2.1c-3.1.67-3.76-1.32-3.76-1.32-.5-1.29-1.24-1.63-1.24-1.63-1.01-.69.08-.68.08-.68 1.12.08 1.71 1.15 1.71 1.15 1 1.7 2.62 1.21 3.26.93.1-.72.39-1.21.71-1.49-2.48-.28-5.09-1.24-5.09-5.52 0-1.22.44-2.22.11-2.96 0 0 .94-.3 3.05 1.14a10.6 10.6 0 0 1 5.55 0c2.11-1.44 3.05-1.14 3.05-1.14.61 1.54.23 2.68.11 2.96.72.78 1.15 1.78 1.15 3 0 4.29-2.61 5.23-5.1 5.5.4.35.76 1.02.76 2.06v3.1c0 .3.2.65.77.54A11.1 11.1 0 0 0 12 .9Z"/></svg></a><a href="https://www.linkedin.com/in/lakshay-batra-10615737b" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile, opens in a new tab" title="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 2H3.55C2.69 2 2 2.68 2 3.52v16.96c0 .84.69 1.52 1.55 1.52h16.9c.86 0 1.55-.68 1.55-1.52V3.52c0-.84-.69-1.52-1.55-1.52ZM7.93 18.75H4.96V9.19h2.97v9.56ZM6.45 7.88a1.72 1.72 0 1 1 0-3.44 1.72 1.72 0 0 1 0 3.44Zm12.3 10.87h-2.96V14.1c0-1.11-.02-2.54-1.55-2.54-1.55 0-1.79 1.21-1.79 2.46v4.73H9.49V9.19h2.84v1.31h.04c.4-.75 1.36-1.55 2.8-1.55 3 0 3.58 1.98 3.58 4.55v5.25Z"/></svg></a><a href="mailto:batralakshay018@gmail.com" aria-label="Email Lakshay Batra" title="Email"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm-.4 3.25-7.03 5.27a.95.95 0 0 1-1.14 0L4.4 7.25a1 1 0 1 1 1.2-1.6l6.4 4.8 6.4-4.8a1 1 0 1 1 1.2 1.6Z"/></svg></a></div><span class="copyright">© <span id="year"></span> LAKSHAY BATRA</span></div></footer>
+
+  <script>
+    const projects = [
+      {
+        id: 'grade-report',
+        title: 'Student Grade Report & Debugging Exercise',
+        repo: 'correcting-grade-25BCON1007',
+        url: 'https://github.com/batralakshay018-hue/correcting-grade-25BCON1007',
+        category: ['python', 'academic'],
+        summary: 'A Python roster-report exercise that calculates student score totals and averages, assigns grade bands, and summarizes class results.',
+        objective: 'Practice Python functions, loops, list-based records, grade calculations, and debugging logic through a student-results report.',
+        features: ['Calculates each roster entry’s score total and average.', 'Assigns a letter grade using average-score thresholds.', 'Reports the class average, students above that average, and the highest-average student.'],
+        implementation: 'The available source is messy_py.py. It defines a hard-coded student roster and computes the report in Python; the repository language metadata reports Python only. No framework or external library is identified.',
+        technologies: ['Python', 'Functions', 'Lists', 'Loops'],
+        setup: 'With Python 3 installed, run `python messy_py.py` from the repository directory. This command is based on the source file present in the repository.',
+        documentation: 'The README describes student_utils.py and test_student_utils.py, but those files are not present in the public repository root listing. The README’s nine-test claim and test command could not be verified against the available files.',
+        status: 'Public repository · source available',
+        created: '2026-10-27',
+        updated: '2026-10-27',
+        visual: 'GRADE REPORT',
+        file: 'messy_py.py'
+      },
+      {
+        id: 'fibonacci',
+        title: 'Fibonacci Sequence Generator',
+        repo: '1.-python-basics-25BCON1007-fibonacci',
+        url: 'https://github.com/batralakshay018-hue/1.-python-basics-25BCON1007-fibonacci',
+        category: ['python', 'academic'],
+        summary: 'A beginner Python script that prints the first ten values of the Fibonacci sequence.',
+        objective: 'Practice variables, iteration, output, and generating each sequence value from the two preceding values.',
+        features: ['Initializes the sequence with 0 and 1.', 'Repeats the sum-and-update step ten times.', 'Prints the sequence on one line.'],
+        implementation: 'fibonacci.py uses a for loop and two state variables, updating them with the sum of the preceding pair. The number of values is fixed at ten; there is no user input or external framework.',
+        technologies: ['Python', 'For loop', 'Basic arithmetic'],
+        setup: 'With Python installed, run `python fibonacci.py` or `python3 fibonacci.py` from the repository directory, as described in the README.',
+        documentation: 'The README and audit.md describe the same fixed-length sequence behavior as the source. No screenshots, external dependencies, or live deployment were found in the repository listing.',
+        status: 'Public repository · source available',
+        created: '2026-10-27',
+        updated: '2026-10-27',
+        visual: 'SEQUENCE · 10 TERMS',
+        file: 'fibonacci.py'
+      },
+      {
+        id: 'student-dictionary',
+        title: 'Student Record with Python Dictionaries',
+        repo: 'python-basics-25BCON1007-struct-to-dict',
+        url: 'https://github.com/batralakshay018-hue/python-basics-25BCON1007-struct-to-dict',
+        category: ['python', 'academic'],
+        summary: 'A small Python example that stores a student name, roll number, and marks in a dictionary and prints the values.',
+        objective: 'Demonstrate dictionary declaration, key lookup, f-strings, and one-decimal-place number formatting.',
+        features: ['Creates a student dictionary with name, roll, and marks fields.', 'Reads each value by its key.', 'Formats the marks value to one decimal place in console output.'],
+        implementation: 'struct_to_dict.py contains a fixed example record (Rahul, roll 101, marks 87.5) and three formatted print statements. It uses Python standard features only.',
+        technologies: ['Python', 'Dictionaries', 'F-strings'],
+        setup: 'With Python installed, run `python struct_to_dict.py` from the repository directory. The checked-in source filename uses underscores; the README refers to a hyphenated filename.',
+        documentation: 'The README explains the dictionary and f-string learning objective. Its run instructions use a filename that differs from the checked-in source. No screenshots, external dependencies, or live deployment were found.',
+        status: 'Public repository · source available',
+        created: '2026-10-27',
+        updated: '2026-10-27',
+        visual: 'KEY / VALUE',
+        file: 'struct_to_dict.py'
+      },
+      {
+        id: 'factorial',
+        title: 'Factorial Calculator',
+        repo: 'python-basic-25bcon1007',
+        url: 'https://github.com/batralakshay018-hue/python-basic-25bcon1007',
+        category: ['python', 'academic'],
+        summary: 'A command-line Python script that asks for an integer and multiplies the values from 1 through that input.',
+        objective: 'Practice integer input, a for loop, repeated multiplication, and console output.',
+        features: ['Prompts the visitor to enter an integer.', 'Calculates the product of values from 1 through the entered number.', 'Prints the result as “Factorial = …”.'],
+        implementation: 'The source file is untitled1.py. It reads an integer with input(), initializes the product to 1, and multiplies in a for loop. There is no negative-number validation or invalid-input handling, and no external package is imported.',
+        technologies: ['Python', 'For loop', 'Console input/output'],
+        setup: 'With Python 3 installed, run `python untitled1.py` from the repository directory. No package installation is indicated by the available source.',
+        documentation: 'The README describes factorial.py, NumPy, requirements.txt, and validation, but the public root listing contains untitled1.py and no requirements file. The source does prompt for input, but it does not validate it; follow the source rather than those README claims.',
+        status: 'Public repository · source available',
+        created: '2026-09-10',
+        updated: '2026-09-10',
+        visual: 'N! · ITERATION',
+        file: 'untitled1.py'
+      }
+    ];
+
+    const projectGrid = document.querySelector('#project-grid');
+    const projectCount = document.querySelector('#project-count');
+    const projectFilters = document.querySelector('.project-filters');
+
+    function renderProject(project) {
+      const features = project.features.map((feature) => `<li>${feature}</li>`).join('');
+      const tags = project.technologies.map((technology) => `<span class="tag">${technology}</span>`).join('');
+      return `
+        <article class="project-card" data-categories="${project.category.join(' ')}">
+          <div class="project-preview code-preview" aria-label="Typographic project placeholder, not a screenshot">
+            <div class="code-preview-top"><span>PYTHON / COURSEWORK</span><span>REPOSITORY</span></div>
+            <div class="code-preview-title">${project.visual}<span>${project.file}</span></div>
+            <div class="code-preview-bottom"><span>CODE STUDY</span><span>NO SCREENSHOT</span></div>
+          </div>
+          <div class="project-body">
+            <span class="project-type">${project.status}</span>
+            <h3>${project.title}</h3>
+            <p>${project.summary}</p>
+            <div class="tags">${tags}</div>
+            <div class="project-actions"><a class="text-link" href="${project.url}" target="_blank" rel="noopener noreferrer" aria-label="View ${project.repo} on GitHub in a new tab">VIEW ON GITHUB ↗</a></div>
+            <details class="project-details">
+              <summary>VIEW PROJECT DETAILS</summary>
+              <div class="project-details-content">
+                <h4>Overview &amp; objective</h4><p>${project.objective}</p>
+                <h4>Key features</h4><ul>${features}</ul>
+                <h4>How it works</h4><p>${project.implementation}</p>
+                <h4>Problem / learning focus</h4><p>${project.objective}</p>
+                <h4>Technologies</h4><p>${project.technologies.join(' · ')}</p>
+                <h4>Setup</h4><p>${project.setup}</p>
+                <h4>Documentation &amp; media</h4><p>${project.documentation}</p>
+                <h4>Repository record</h4><p>Created ${project.created} · Last updated ${project.updated} · ${project.status}. No live demo is documented. The repository has no verified screenshot in the inspected root contents.</p>
+                <div class="project-links"><a href="${project.url}" target="_blank" rel="noopener noreferrer">GITHUB REPOSITORY ↗</a></div>
+              </div>
+            </details>
+          </div>
+        </article>`;
+    }
+
+    function applyProjectFilter(filter) {
+      let visibleCount = 0;
+      for (const card of projectGrid.querySelectorAll('.project-card')) {
+        const categories = card.dataset.categories.split(' ');
+        const isVisible = filter === 'all' || categories.includes(filter);
+        card.hidden = !isVisible;
+        if (isVisible) visibleCount += 1;
+      }
+      projectCount.textContent = `${visibleCount} ${visibleCount === 1 ? 'PROJECT' : 'PROJECTS'}`;
+    }
+
+    projectGrid.innerHTML = projects.map(renderProject).join('');
+    applyProjectFilter('all');
+    projectFilters.addEventListener('click', (event) => {
+      const button = event.target.closest('[data-filter]');
+      if (!button) return;
+      projectFilters.querySelectorAll('[data-filter]').forEach((filterButton) => {
+        filterButton.setAttribute('aria-pressed', String(filterButton === button));
+      });
+      applyProjectFilter(button.dataset.filter);
+    });
+
+    const aiProviders = {
+      openai: { name: 'ChatGPT by OpenAI', endpoint: '/api/chat/openai' },
+      xai: { name: 'Grok by xAI', endpoint: '/api/chat/xai' }
+    };
+    const aiMessages = document.querySelector('#ai-messages');
+    const aiForm = document.querySelector('#ai-form');
+    const aiInput = document.querySelector('#ai-input');
+    const aiSend = document.querySelector('#ai-send');
+    const aiStatus = document.querySelector('#ai-status');
+    const aiModeLabel = document.querySelector('#ai-mode-label');
+    const aiModeDescription = document.querySelector('#ai-mode-description');
+    const aiSelectedName = document.querySelector('#ai-selected-name');
+    const aiProviderButtons = [...document.querySelectorAll('.ai-provider')];
+    let activeProvider = 'openai';
+    let providerAvailability = { openai: false, xai: false };
+    let isAiLoading = false;
+    const conversation = [];
+
+    function currentProviderName() {
+      return aiProviders[activeProvider].name;
+    }
+
+    function updateAiMode(message) {
+      const live = providerAvailability[activeProvider];
+      aiModeLabel.textContent = live ? 'LIVE API READY' : 'DEMO MODE';
+      aiModeDescription.textContent = live
+        ? 'This provider is configured on the server. Prompts are sent to its API through the protected backend.'
+        : 'Sample responses run locally in this page. Add this provider’s server-side API key to enable real responses.';
+      aiSelectedName.textContent = currentProviderName();
+      aiStatus.classList.toggle('real', live);
+      aiStatus.classList.remove('error');
+      aiStatus.textContent = message || (live
+        ? `${currentProviderName()} is ready through the server.`
+        : `${currentProviderName()} is in demo mode. No API key or backend connection is available.`);
+    }
+
+    function renderAiMessages() {
+      aiMessages.replaceChildren();
+      for (const [index, item] of conversation.entries()) {
+        const row = document.createElement('div');
+        row.className = `ai-message ${item.role === 'user' ? 'user' : item.role === 'error' ? 'error' : 'assistant'}`;
+        const label = document.createElement('span');
+        label.className = 'ai-message-label';
+        label.textContent = item.role === 'user' ? 'YOU' : item.role === 'error' ? 'CONNECTION ISSUE' : item.provider === 'Portfolio guide' ? 'PORTFOLIO GUIDE' : item.mode === 'demo' ? `DEMO SAMPLE · ${item.provider}` : (item.provider || currentProviderName()).toUpperCase();
+        const bubble = document.createElement('div');
+        bubble.className = 'ai-bubble';
+        bubble.textContent = item.content;
+        row.append(label, bubble);
+        if (item.role === 'error' && item.retryText) {
+          const retry = document.createElement('button');
+          retry.type = 'button';
+          retry.className = 'ai-retry';
+          retry.dataset.retryIndex = String(index);
+          retry.textContent = 'RETRY ↻';
+          retry.setAttribute('aria-label', 'Retry sending the previous message');
+          row.append(retry);
+        }
+        aiMessages.append(row);
+      }
+      if (isAiLoading) {
+        const row = document.createElement('div');
+        row.className = 'ai-message assistant';
+        row.setAttribute('aria-label', `${currentProviderName()} is typing`);
+        const label = document.createElement('span');
+        label.className = 'ai-message-label';
+        label.textContent = `${currentProviderName().toUpperCase()} IS TYPING`;
+        const dots = document.createElement('span');
+        dots.className = 'ai-typing';
+        dots.setAttribute('aria-hidden', 'true');
+        for (let dot = 0; dot < 3; dot += 1) dots.append(document.createElement('i'));
+        row.append(label, dots);
+        aiMessages.append(row);
+      }
+      aiMessages.scrollTop = aiMessages.scrollHeight;
+    }
+
+    function addWelcomeMessage() {
+      conversation.push({ role: 'assistant', provider: 'Portfolio guide', content: 'Hi! I’m an AI playground for Lakshay Batra’s portfolio. Ask about his B.Tech CSE (AI/ML) studies at JECRC University, learning interests, or the four Python repositories featured here. I only have the information shown on this portfolio.' });
+      renderAiMessages();
+    }
+
+    function demoReply(message) {
+      const prompt = message.toLowerCase();
+      if (/project|github|repo/.test(prompt)) {
+        return 'The portfolio currently features four public Python repositories: Student Grade Report & Debugging Exercise, Fibonacci Sequence Generator, Student Record with Python Dictionaries, and Factorial Calculator. Their cards include source-based details and direct GitHub links. The Reading List App is not included because it is not present in the inspected repositories or this site’s implementation.';
+      }
+      if (/technolog|learn|skill|know/.test(prompt)) {
+        return 'Lakshay is a second-year B.Tech Computer Science and Engineering (AI/ML) student at JECRC University. The portfolio lists programming, AI, machine learning, web development, prompt engineering, Git/GitHub, AI-assisted development, and problem-solving as areas of interest or learning, not confirmed proficiency.';
+      }
+      if (/artificial intelligence|\bai\b|machine learning|\bml\b/.test(prompt)) {
+        return 'Artificial intelligence is a broad field focused on systems performing tasks associated with human reasoning or perception. Machine learning is one approach within AI: models learn patterns from data and use them to make predictions or decisions. This is a general explanation, not a claim about Lakshay’s completed AI/ML projects.';
+      }
+      if (/coding|program|improv/.test(prompt)) {
+        return 'A practical way to improve is to keep building small programs, test edge cases, read error messages carefully, and explain each function in your own words. Lakshay’s public Python repositories offer beginner examples in loops, functions, dictionaries, and console input/output.';
+      }
+      return 'I’m in demo mode, so I can only provide sample replies about the information published on this portfolio. Try asking about Lakshay’s projects, studies, learning interests, or a general AI/ML topic. Real provider responses require a server with the corresponding API key configured.';
+    }
+
+    function setAiLoading(loading) {
+      isAiLoading = loading;
+      aiSend.disabled = loading;
+      aiProviderButtons.forEach((button) => { button.disabled = loading; });
+      document.querySelector('#ai-clear').disabled = loading;
+      renderAiMessages();
+    }
+
+    async function requestAiReply(text, addUserMessage = true) {
+      if (isAiLoading) return;
+      if (addUserMessage) conversation.push({ role: 'user', content: text });
+      setAiLoading(true);
+      try {
+        let responseText;
+        if (providerAvailability[activeProvider]) {
+          const history = conversation.filter((item) => item.role === 'user' || item.role === 'assistant').slice(-12);
+          const response = await fetch(aiProviders[activeProvider].endpoint, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message: text, messages: history })
+          });
+          const payload = await response.json();
+          if (!response.ok) throw new Error(payload.error || 'The selected AI service could not respond.');
+          responseText = payload.response;
+          if (typeof responseText !== 'string' || !responseText.trim()) throw new Error('The selected AI service returned an empty response.');
+          aiStatus.classList.add('real');
+          aiStatus.textContent = `Live response from ${currentProviderName()} through the server.`;
+        } else {
+          await new Promise((resolve) => setTimeout(resolve, 650));
+          responseText = demoReply(text);
+          aiStatus.classList.remove('real', 'error');
+          aiStatus.textContent = `DEMO MODE · Sample response from ${currentProviderName()}; no external AI service was contacted.`;
+        }
+        conversation.push({ role: 'assistant', mode: providerAvailability[activeProvider] ? 'live' : 'demo', provider: currentProviderName(), content: responseText });
+      } catch (error) {
+        conversation.push({ role: 'error', content: `${error.message || 'The AI service is temporarily unavailable.'} You can retry this message or switch to the other provider.`, retryText: text });
+        aiStatus.classList.add('error');
+        aiStatus.classList.remove('real');
+        aiStatus.textContent = 'Could not get a response. Retry, or select another provider.';
+      } finally {
+        setAiLoading(false);
+      }
+    }
+
+    document.querySelector('.ai-sidebar').addEventListener('click', (event) => {
+      const button = event.target.closest('[data-provider]');
+      if (!button || isAiLoading) return;
+      activeProvider = button.dataset.provider;
+      aiProviderButtons.forEach((providerButton) => providerButton.setAttribute('aria-pressed', String(providerButton === button)));
+      updateAiMode();
+      renderAiMessages();
+    });
+    document.querySelector('#ai-clear').addEventListener('click', () => {
+      if (isAiLoading) return;
+      conversation.length = 0;
+      addWelcomeMessage();
+      aiInput.value = '';
+      updateAiMode();
+    });
+    document.querySelector('.ai-prompts').addEventListener('click', (event) => {
+      const prompt = event.target.closest('.ai-prompt');
+      if (!prompt || isAiLoading) return;
+      aiInput.value = prompt.textContent.trim();
+      requestAiReply(aiInput.value.trim());
+      aiInput.value = '';
+    });
+    aiMessages.addEventListener('click', (event) => {
+      const retryButton = event.target.closest('[data-retry-index]');
+      if (!retryButton || isAiLoading) return;
+      const failedItem = conversation[Number(retryButton.dataset.retryIndex)];
+      if (!failedItem || failedItem.role !== 'error') return;
+      const retryText = failedItem.retryText;
+      conversation.splice(Number(retryButton.dataset.retryIndex), 1);
+      requestAiReply(retryText, false);
+    });
+    aiForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const message = aiInput.value.trim();
+      if (!message || isAiLoading) return;
+      aiInput.value = '';
+      requestAiReply(message);
+    });
+    aiInput.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' && !event.shiftKey && !event.isComposing) {
+        event.preventDefault();
+        aiForm.requestSubmit();
+      }
+    });
+    addWelcomeMessage();
+    fetch('/api/chat/status').then((response) => {
+      if (!response.ok) throw new Error('Backend is not available');
+      return response.json();
+    }).then((status) => {
+      providerAvailability = { openai: Boolean(status.providers?.openai), xai: Boolean(status.providers?.xai) };
+      updateAiMode();
+    }).catch(() => {
+      providerAvailability = { openai: false, xai: false };
+      updateAiMode('DEMO MODE · No local AI server detected. The playground is still ready with sample responses.');
+    });
+
+    const menuButton = document.querySelector('.menu-toggle');
+    const navigation = document.querySelector('#nav-links');
+    menuButton.addEventListener('click', () => {
+      const isOpen = menuButton.getAttribute('aria-expanded') === 'true';
+      menuButton.setAttribute('aria-expanded', String(!isOpen));
+      navigation.classList.toggle('open', !isOpen);
+    });
+    navigation.addEventListener('click', (event) => {
+      if (event.target.closest('a')) {
+        menuButton.setAttribute('aria-expanded', 'false');
+        navigation.classList.remove('open');
+      }
+    });
+
+    document.querySelector('#year').textContent = new Date().getFullYear();
+    const form = document.querySelector('#contact-form');
+    const status = document.querySelector('#form-status');
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      if (!form.reportValidity()) return;
+      status.textContent = 'Thanks, ' + form.elements.name.value.trim() + '. The form passed validation, but no message was sent because a submission service is not configured.';
+      form.reset();
+    });
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      }
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach((item) => revealObserver.observe(item));
+  </script>
+</body>
+</html>
