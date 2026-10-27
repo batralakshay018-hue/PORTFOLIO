@@ -1,7 +1,8 @@
 # Lakshay Batra Portfolio
 
 A responsive, single-page portfolio with a repository-backed project gallery and an AI Playground. The website can be opened as `index.html`; the chat interface works in demo mode without a backend.
-
+Deployed
+https://portfoliolakshay-one.vercel.app/
 ## AI Playground Modes
 
 - **Demo mode:** Runs local sample responses for both ChatGPT and Grok. No external AI service is contacted and no API keys are needed.
